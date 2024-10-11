@@ -1,3 +1,42 @@
-from django.db import models # noqa
+"""
+database models
+"""
+from django.db import models
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 
-# Create your models here.
+
+class UserManager(BaseUserManager):
+    """manager for users"""
+    """BaseUserManager class provide by Django and we want to use that"""
+
+    def create_user(self, email, password=None, **extra_field):
+        """create save and return new user"""
+        """extra_field makes it so you can provide keyword arguments such as
+            Name as an additional field. Name field will then be atomatically
+            created when the user model is created.
+        """
+        user = self.model(email=email, **extra_field)
+        """will take password provided and encrypt the password in the db"""
+        user.set_password(password)
+        """saves user model to support adding multiple databases if needed"""
+        user.save(using=self._db)
+
+        return user
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    """user in system"""
+    email = models.EmailField(max_length=255, unique=True)
+    name = models.CharField(max_length=225)
+    is_active = models.BooleanField(default=True)
+    """Django admin"""
+    is_staff =models.BooleanField(default=False)
+
+    """how you assign a user manager in Django"""
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
