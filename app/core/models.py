@@ -19,6 +19,9 @@ class UserManager(BaseUserManager):
             Name as an additional field. Name field will then be atomatically
             created when the user model is created.
         """
+        """Ensure users have an email address"""
+        if not email:
+            raise ValueError('User must have an email address')
         """send it through the normalize_email method before saving first"""
         user = self.model(email=self.normalize_email(email), **extra_field)
         """will take password provided and encrypt the password in the db"""
