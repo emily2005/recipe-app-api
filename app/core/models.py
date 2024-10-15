@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=225)
     is_active = models.BooleanField(default=True)
     """Django admin"""
-    is_staff =models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     """how you assign a user manager in Django"""
     objects = UserManager()
