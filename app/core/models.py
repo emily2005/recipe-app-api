@@ -19,7 +19,8 @@ class UserManager(BaseUserManager):
             Name as an additional field. Name field will then be atomatically
             created when the user model is created.
         """
-        user = self.model(email=email, **extra_field)
+        """send it through the normalize_email method before saving first"""
+        user = self.model(email=self.normalize_email(email), **extra_field)
         """will take password provided and encrypt the password in the db"""
         user.set_password(password)
         """saves user model to support adding multiple databases if needed"""
