@@ -29,8 +29,8 @@ class UserManager(BaseUserManager):
         """saves user model to support adding multiple databases if needed"""
         user.save(using=self._db)
 
-        return user
-     
+        return user 
+
     def create_superuser(self, email, password):
         """create and retur a new superuser"""
         user = self.create_user(email, password)

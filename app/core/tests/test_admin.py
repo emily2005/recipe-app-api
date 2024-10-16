@@ -11,7 +11,8 @@ class AdminSiteTests(TestCase):
 
     def setUp(self):
         """create user and client"""
-        """this is the Django test client that allows us to ake http requests"""
+        """this is the Django test client that allows us to ake http
+        requests"""
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
             email='admin@example.com',
