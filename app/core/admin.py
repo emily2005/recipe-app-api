@@ -12,7 +12,7 @@ class UserAdmin(BaseUserAdmin):
     """order them by id"""
     ordering = ['id']
     list_display = ['email', 'name']
-    """useradmin needs to sypport all fields in custom model not just base 
+    """useradmin needs to sypport all fields in custom model not just base
     useradmin class we are using"""
     """making custom fields that exist in models.py"""
     fieldsets = (
@@ -35,7 +35,7 @@ class UserAdmin(BaseUserAdmin):
             """classes is how we assign custom css classes in django
                 "wide" makes the page cleaner and neater
             """
-            'classes':('wide)'),
+            'classes': ('wide)'),
             'fields': (
                 'email',
                 'password1',
@@ -49,4 +49,4 @@ class UserAdmin(BaseUserAdmin):
     )
 
 
-admin.site.register(models.User, UserAdmin) 
+admin.site.register(models.User, UserAdmin)

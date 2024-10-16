@@ -31,16 +31,18 @@ class AdminSiteTests(TestCase):
         """makes http get request to the url"""
         res = self.client.get(url)
 
-        """checking that the page contains the name of the user we created above"""
+        """checking that the page contains the name of the user we created
+            above"""
         self.assertContains(res, self.user.name)
-        """checking that the page containst the email of the user we created"""
+        """checking that the page containst the email of the user we
+        created"""
         self.assertContains(res, self.user.email)
 
     def test_edit_user_page(self):
         """Test the edit user page works"""
         """do a reverse URL here with diff URL
-            should get a url that looks like: 
-            url = http://localhost:8000/admin/core/user/1/change/ 
+            should get a url that looks like:
+            url = http://localhost:8000/admin/core/user/1/change/
         """
         url = reverse('admin:core_user_change', args=[self.user.id])
         res = self.client.get(url)
