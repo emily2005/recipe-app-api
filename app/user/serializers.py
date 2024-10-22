@@ -14,7 +14,6 @@ class UserSerializer(serializers.ModelSerializer):
     """model serializers let us automatically validate and save things
     to a specific model that we define in our serializer"""
 
-    
     class Meta:
         model = get_user_model()
         fields = ['email', 'password', 'name']

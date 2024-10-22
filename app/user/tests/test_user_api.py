@@ -12,8 +12,6 @@ TOKEN_URL = reverse('user:token')
 ME_URL = reverse('user:me')
 
 
-"""helper function that lets us create a user we can use for testing"""
-""" **params gives flexibility to add any paramters we want to this function"""
 def create_user(**params):
     """create and return new user"""
     return get_user_model().objects.create_user(**params)
