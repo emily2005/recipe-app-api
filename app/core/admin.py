@@ -32,9 +32,6 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ['last_login']
     add_fieldsets = (
         (None, {
-            """classes is how we assign custom css classes in django
-                "wide" makes the page cleaner and neater
-            """
             'classes': ('wide)'),
             'fields': (
                 'email',
