@@ -17,24 +17,17 @@ class CreateUserView(generics.CreateAPIView):
 
 
 class CreateTokenView(ObtainAuthToken):
-    """create new auth token for user"""
-    serializer_clas = AuthTokenSerializer
+    """Create a new auth token for user."""
+    serializer_class = AuthTokenSerializer
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
-    """RetrieveUpdateAPIView is proided by the django rest frameowrk to provide
-    funtionailty needed for retreiving and updating objets in the database """
-    """Manage authenticated user"""
+    """Manage the authenticated user."""
     serializer_class = UserSerializer
-    authentcation_classes = [authentication.TokenAuthentication]
-    """"permission classes we jknow who the user is what is it that user
-    is allowed to do in our system? Want user to be authenticated. no other
-    restrictions"""
+    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
-        """retrieve and reutrn authenticated user"""
-        """when user is auth the user object is assigned to the request object
-        available in the view"""
+        """Retrieve and return the authenticated user."""
         return self.request.user

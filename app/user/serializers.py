@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """update and return user"""
-        """popo the password, retrieve the password so remove it from the
+        """pop the password, retrieve the password so remove it from the
         dictionary once we retreive it"""
         password = validated_data.pop('password', None)
         user = super().update(instance, validated_data)
@@ -55,7 +55,7 @@ class AuthTokenSerializer(serializers.Serializer):
             password=password,
         )
         if not user:
-            msg = _('Unable toauth with provided creds')
+            msg = _('Unable to auth with provided creds')
             raise serializers.ValidationError(msg, code='authorization')
 
         attrs['user'] = user
