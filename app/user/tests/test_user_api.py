@@ -11,6 +11,7 @@ CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
 ME_URL = reverse('user:me')
 
+
 """helper function that lets us create a user we can use for testing"""
 """ **params gives flexibility to add any paramters we want to this function"""
 def create_user(**params):
@@ -18,10 +19,9 @@ def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
 
-"""public is unathenticated requests (dont require authentication)"""
-"""private does require authentication to test"""
 class PublicApiTests(TestCase):
-    """test the public features of the use api"""
+    """test the public features of the use api
+    public does not require authentication private does"""
 
     def setUp(self):
         """create api client we can use for testing"""
@@ -35,7 +35,6 @@ class PublicApiTests(TestCase):
             'email': 'test@example.com',
             'password': 'testpass123',
             'name': 'Test Name',
-                
         }
         """now post this data to the api to do the test"""
         """will make a http post request to our CREATE USER URL and

@@ -11,8 +11,9 @@ from rest_framework import serializers
 class UserSerializer(serializers.ModelSerializer):
     """serializer for the user object"""
     """serialize is a way to convert objects to and from python objects"""
-    """model serializers let us automatically validate and save things 
+    """model serializers let us automatically validate and save things
     to a specific model that we define in our serializer"""
+
     
     class Meta:
         model = get_user_model()
